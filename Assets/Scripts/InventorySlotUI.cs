@@ -20,12 +20,17 @@ public class InventorySlotUI : MonoBehaviour
     public void SetItem(ArtifactData artifact)
     {
         currentArtifact = artifact;
+
         if(artifact != null)
         {
             itemImage.sprite = artifact.icon;
             itemImage.enabled = true;
             outline.enabled = false;
             levelText.text = "Lv." + artifact.level.ToString();
+        }
+        else
+        {
+            Clear();
         }
     }
 
@@ -40,7 +45,12 @@ public class InventorySlotUI : MonoBehaviour
 
     public void OnClick()
     {
-        outline.enabled = !outline.enabled;
+        InventoryManager.Instance.SelectSlot(this);
+    }
+
+    public void SetSelected(bool selected)
+    {
+        outline.enabled = selected;
     }
 
     public ArtifactData GetArtifact()

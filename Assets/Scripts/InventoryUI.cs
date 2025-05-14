@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class InventoryUI : MonoBehaviour
             InventorySlotUI slotUI = obj.GetComponent<InventorySlotUI>();
             slotUI.Init(i);
             slotUIs.Add(slotUI);
+
+            InventorySlotUI capturedSlot = slotUI;
+
+            Button button = obj.GetComponent<Button>();
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => capturedSlot.OnClick());
         }
     }
 

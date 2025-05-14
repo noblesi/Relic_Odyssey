@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ArtifactData", menuName = "RelicOdyssey/ArtifactData")]
 public class ArtifactData : ScriptableObject
 {
-    public string ArtifactName;
+    public string artifactName;
     public Sprite icon;
-    public string Description;
+    public string description;
     public ArtifactRarity rarity;
     public int level;
     public int maxLevel;
