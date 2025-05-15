@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class InventorySlotUI : MonoBehaviour
+public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image itemImage;
     public Outline outline;
@@ -61,5 +62,18 @@ public class InventorySlotUI : MonoBehaviour
     public int GetIndex()
     {
         return slotIndex;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(currentArtifact != null)
+        {
+            TooltipUI.Instance.ShowTooltip(currentArtifact, transform.position);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipUI.Instance.HideTooltip();
     }
 }
